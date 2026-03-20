@@ -9,13 +9,9 @@
 // @grant        none
 // @run-at       start
 // ==/UserScript==
-//
-// Translations: EN + SK only; if you maintain data/resource-helper-locales.js, keep this file in sync.
 
 (function () {
   'use strict';
-
-  console.log('init');
 
   const STORAGE_KEY = 'travian_resource_targets';
 
