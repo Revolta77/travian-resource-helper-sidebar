@@ -1,0 +1,26 @@
+# JetBrains / IDE
+.idea/
+*.iml
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Logy a dočasné súbory
+*.log
+*.tmp
+*.swp
+*~
+
+# Node (budúce nástroje / závislosti)
+node_modules/
+npm-debug.log*
+
+# Lokálne konfigurácie / tajomstvá
+.env
+.env.*
+
+# Balíčky rozšírení (ak si ich vytváraš ručne)
+*.crx
+*.zip
