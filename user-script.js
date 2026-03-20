@@ -5,7 +5,7 @@
 // @author       Revolta77
 // @homepageURL  https://github.com/Revolta77/travian-resource-helper-sidebar
 // @supportURL   https://github.com/Revolta77/travian-resource-helper-sidebar/issues
-// @match        *://*/*
+// @match        *://*.travian.com/*
 // @grant        none
 // @run-at       start
 // ==/UserScript==
