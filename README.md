@@ -1,58 +1,30 @@
-# Travian Resource Helper
+# Travian Resource Helper (Sidebar)
 
-Súbory pre **Travian Resource Calculator** – rozšírenie pre prehliadač (Chromium, Manifest V3) a súvisiaci **userscript** (Resource Helper sidebar) s prekladmi **EN / SK**.
+Userscript for **Travian** that adds a **Resource Helper** box to the game sidebar. It reads construction costs, troop training totals, and academy research rows on the current page, shows **how much wood, clay, iron, and crop you still need**, and lets you **save** those shortages for later.
 
-## Štruktúra projektu
+## What it helps with
 
-| Cesta | Popis |
-|--------|--------|
-| `1.3_0/` | Balík rozšírenia: `manifest.json`, content skripty, popup, ikony. |
-| `user-script.js` | Userscript (Tampermonkey / podobné) – bočný panel a logika „Resource Helper“. |
-| `data/resource-helper-locales.js` | Centrálne reťazce pre userscript; zdroj pravdy pre i18n. |
-| `embed-i18n.mjs` | Nástroj, ktorý vloží obsah `resource-helper-locales.js` do `user-script.js` (po úprave prekladov). |
+- **Planning**: See missing resources at a glance while you scroll (the box can stay pinned near the top of the viewport).
+- **Queue**: Save several “need” snapshots with a label (the active village name is prefixed when the game exposes it). Reopen them from the **Saved** list.
+- **Filling needs**: On supported pages, **Insert** can help apply a saved entry — for example on the **market** or when using **hero inventory** resource items, depending on what the current Travian UI exposes.
 
-Rozšírenie v `1.3_0` má vlastné `data/locales.js` – pri zmene textov v userscripte drž `resource-helper-locales.js` a príslušné súbory rozšírenia v súlade (podľa toho, čo používaš).
+UI strings are available in **English** and **Slovak**; the language follows the page `lang` attribute (`sk` → Slovak, otherwise English).
 
-## Rozšírenie – načítanie v Chrome / Edge
+## Requirements
 
-1. Otvor `chrome://extensions` (alebo `edge://extensions`).
-2. Zapni **Režim pre vývojárov** / **Developer mode**.
-3. **Načítať rozšírenie bez balenia** / **Load unpacked** a vyber priečinok `1.3_0`.
+- A userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) (or compatible).
+- The script is intended for **Travian** pages; `@match` may be broad in the distributed file — tighten it in your copy if you only want it on Travian domains.
 
-Rozšírenie je nastavené na domény `*.travian.com` (pozri `manifest.json`).
+## Install
 
-## Userscript
+1. Install Tampermonkey (or similar).
+2. Create a new script and paste the contents of `user-script.js`, **or** install from a raw URL if you publish one.
+3. Save and reload a Travian tab. The sidebar box should appear when the page has a compatible sidebar layout.
 
-Skopíruj obsah `user-script.js` do správcu userscriptov (napr. Tampermonkey) alebo ho nasmeruj na súbor podľa dokumentácie doplnku. Po úprave `data/resource-helper-locales.js` spusti synchronizáciu (nižšie).
+## Privacy / data
 
-## Synchronizácia prekladov do `user-script.js`
+Saved entries are stored in **`localStorage`** in your browser (key used by the script for the queue). Nothing is sent to the script author by default.
 
-Z koreňa repozitára (vyžaduje [Node.js](https://nodejs.org/)):
+## License
 
-```bash
-node embed-i18n.mjs
-```
-
-Skript prečíta `data/resource-helper-locales.js` a vloží definície jazykov do `user-script.js` za `STORAGE_KEY`.
-
-## Vývoj
-
-- **Node:** `embed-i18n.mjs` používa ES moduly (`import`); spúšťaj cez `node embed-i18n.mjs`.
-- **Poznámka k `manifest.json`:** pole `key` fixuje ID rozšírenia pri vývoji; pri verejnom forku zváž, či ho chceš z repozitára odstrániť a generovať lokálne.
-
-## Git a push
-
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-git remote add origin <URL-tvojho-repozitára>
-git branch -M main
-git push -u origin main
-```
-
-Ak repozitár už existuje s prvým commitom, použij len `git remote add` a `git push` podľa svojho hostingu (GitHub, GitLab, …).
-
-## Licencia
-
-Obsah repozitára používaj v súlade s licenciami pôvodných autorov a pravidlami hry Travian.
+Use in compliance with Travian’s terms of service and any applicable third-party licenses.

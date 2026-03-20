@@ -1,11 +1,16 @@
 // ==UserScript==
 // @name         Travian Resource Helper Sidebar
+// @namespace    https://github.com/Revolta77/travian-resource-helper-sidebar
+// @version      1.0.0
+// @author       Revolta77
+// @homepageURL  https://github.com/Revolta77/travian-resource-helper-sidebar
+// @supportURL   https://github.com/Revolta77/travian-resource-helper-sidebar/issues
 // @match        *://*/*
 // @grant        none
 // @run-at       start
 // ==/UserScript==
 //
-// Preklady: len en + sk; kópiu drž zosúladenú s data/resource-helper-locales.js.
+// Translations: EN + SK only; if you maintain data/resource-helper-locales.js, keep this file in sync.
 
 (function () {
   'use strict';
